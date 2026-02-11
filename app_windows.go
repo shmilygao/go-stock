@@ -29,6 +29,12 @@ func (a *App) startup(ctx context.Context) {
 	// Perform your setup here
 	a.ctx = ctx
 
+	initStockData(ctx)
+	initStockDataHK(ctx)
+	initStockDataUS(ctx)
+	updateBasicInfo()
+	go MonitorStockPrices(a)
+
 	// 创建系统托盘
 	//systray.RunWithExternalLoop(func() {
 	//	onReady(a)
